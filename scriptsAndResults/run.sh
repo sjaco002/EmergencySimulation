@@ -1,5 +1,4 @@
 #! /bin/sh
-cd ../oneSimulator
-./compile.sh
-./one.sh -b 1
-cd ../scriptsAndResults
+./generatedata.sh
+python ./convertToADM.py
+python runAsterixCommands.sh

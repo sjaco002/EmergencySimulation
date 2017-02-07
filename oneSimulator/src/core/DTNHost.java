@@ -353,7 +353,7 @@ public class DTNHost implements Comparable<DTNHost> {
         double timeOffset = Math.round(SimClock.getTime() * 10);
         timeOffset = timeOffset/10;
         if (name.startsWith("s") && timeOffset == 0.1){
-               logger.info("shelter " + "location:" + location);
+               logger.info("shelter name: " + name + " location:" + location);
         }
         else if (name.startsWith("e")){
             //emergency
@@ -378,7 +378,7 @@ public class DTNHost implements Comparable<DTNHost> {
                 else if (Integer.parseInt(name.substring(name.length() - 1)) < 9){
                     Etype = "storm";
                 }
-                logger.info("emergency " + "timeOffset: " + timeOffset + " type:" + Etype + " location:" + location);
+                logger.info("emergency " + "timeOffset: " + timeOffset + " type: " + Etype + " location: " + location);
             }
             
         }
