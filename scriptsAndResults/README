@@ -4,5 +4,9 @@ generatedate.sh:
 1) Compiles and runs the one simulator in ../oneSimulator to produce output file with all three datasets logged
 2) Converts the output file into a seperate ADM file for each dataset (reports, locations, shelters)
 
+convertToADM.py:
+1) turns the log into individual ADM output
 
-asterix.sh:
+runAsterixCOmmands.py:
+1) Loads the datasets 
+2) Uses a feed to keep inserting user locations and reports
