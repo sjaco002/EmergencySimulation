@@ -1,4 +1,9 @@
-run.sh runs the full program
+Two files are altered in the one simulator:
+1) default_settings.txt
+2) DTNHost.java
+ALL OTHER FILES ARE DEFAULT ONE SIMULATOR FILES
+
+run.sh runs the full program, including:
 
 generatedate.sh:
 1) Compiles and runs the one simulator in ../oneSimulator to produce output file with all three datasets logged
