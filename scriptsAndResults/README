@@ -1,0 +1,3 @@
+run.sh runs the full program
+1) Compiles and runs the one simulator in ../oneSimulator to produce output file with all three datasets logged
+2) Converts the output file into a seperate ADM file for each dataset (reports, locations, shelters)
