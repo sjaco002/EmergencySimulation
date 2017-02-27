@@ -390,6 +390,9 @@ public class DTNHost implements Comparable<DTNHost> {
             String offsetString = Double.valueOf(timeOffset).toString();
             String second = offsetString.substring(offsetString.length()-1);
             String first = offsetString.substring(offsetString.length()-3, offsetString.length()-2);
+            if (first.equals("0")){
+                first = "";
+            }
             logger.info("user " + "timeOffset: " + timeOffset + " name:" + name + "u" + first + second + " location:" + location);
         }
 	}

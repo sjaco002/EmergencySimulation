@@ -12,7 +12,13 @@ Output to logs happens in DTNHost.update:
 	1 storm 
 Each user updates location every ten seconds
 Six groups of users: 2 pedestrians groups, 1 driving group, and 3 metro groups
-	Each group has 835 nodes, with each node representing 100 users, for a total of 501,000 users on 50,100 unique paths
+	Each group has 835 nodes, with each node representing 100 users, for a total of 501,000 users on 5,010 unique paths
+
+usernames are (p|c|w|t) + (0-5009) + u + (00-99)
+p has 0-834
+c has 835-1669
+w has 1670-2504
+t has 2505-5009
 
 Logs are output to file specified in logging.properties
 
@@ -26,6 +32,20 @@ generatedate.sh:
 convertToADM.py:
 1) turns the log into individual ADM output
 
-runAsterixCOmmands.py:
-1) Loads the datasets 
-2) Uses a feed to keep inserting user locations and reports
+initializeDatasets.sh:
+1) Creates datasets 
+2) Fills Shelters dataset
+3) Starts channels for userlocations and EmergencyReports
+
+startChannel.sh
+1) Starts the channel going
+
+startPolling.sh
+1) Sends individual User Queries (1 for every user) repeatedly
+
+sendLocations.py
+1) Sends User Locations over time
+
+
+sendReports.py
+1) Sends Reports over time
