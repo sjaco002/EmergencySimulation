@@ -46,6 +46,5 @@ startPolling.sh
 sendLocations.py
 1) Sends User Locations over time
 
-
 sendReports.py
 1) Sends Reports over time

@@ -47,6 +47,7 @@ create feed ReportFeed using socket_adapter
     ("sockets"="127.0.0.1:10001"),
     ("address-type"="IP"),
     ("type-name"="EmergencyReport"),
+    ("upsert-feed"="true"),
     ("format"="adm")
 );
 ' http://localhost:19002/aql > reponses/reponses.txt
@@ -57,6 +58,7 @@ create feed LocationFeed using socket_adapter
     ("sockets"="127.0.0.1:10002"),
     ("address-type"="IP"),
     ("type-name"="UserLocation"),
+    ("upsert-feed"="true"),
     ("format"="adm")
 );
 ' http://localhost:19002/aql > reponses/reponses.txt
