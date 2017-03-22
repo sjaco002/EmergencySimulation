@@ -21,7 +21,7 @@ for line in locations:
 	stringTime = "%s" %t
 	stringTime = re.sub(r"\s+", 'T', stringTime)
 	stringTime = stringTime[0:stringTime.index(".")+4]
-	trimmedLine += "Stamp\" : datetime(\"" + stringTime + "\")}"
+	trimmedLine += "Stamp\" : datetime(\"" + stringTime + "\"), \"recordId\" : " + str(i) + "}"
 	print trimmedLine
 	sock1.sendall(trimmedLine)
 
