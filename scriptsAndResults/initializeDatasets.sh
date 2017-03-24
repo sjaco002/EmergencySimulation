@@ -77,7 +77,7 @@ start feed LocationFeed;
 start feed ReportFeed;
 ' http://localhost:19002/aql > reponses/reponses.txt
 
-while read p; do
-  curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse channels; insert into dataset EmergencyShelters('"$p"')' http://localhost:19002/aql > reponses/reponses.txt
-  echo "p is"$p
-done <Shelters.adm
+#while read p; do
+#  curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse channels; insert into dataset EmergencyShelters('"$p"')' http://localhost:19002/aql > reponses/reponses.txt
+#  echo "p is"$p
+#done <Shelters.adm
