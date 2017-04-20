@@ -3,6 +3,7 @@ import random
 import datetime
 import time
 import re
+import pytz
 
 ip = '127.0.0.1'
 port1 = 10001
@@ -17,7 +18,7 @@ for line in locations:
 		time.sleep(1)
 	i=i+1
 	trimmedLine = line.split("Stamp")[0]
-	t = datetime.datetime.now()
+	t = datetime.datetime.now(pytz.utc)
 	stringTime = "%s" %t
 	stringTime = re.sub(r"\s+", 'T', stringTime)
 	stringTime = stringTime[0:stringTime.index(".")+4]

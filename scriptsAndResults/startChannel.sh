@@ -1,20 +1,17 @@
 #! /bin/sh
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse channels;
-create function RecentEmergenciesNearUser($user) {  
-  let $lastTenSeconds :=
-    current-datetime() - day-time-duration("PT10S")
-  for $emergency in dataset EmergencyReports
-  for $userlocation in dataset UserLocations
-  where $userlocation.userName = $user
-    and spatial-intersect($emergency.impactZone,$userlocation.location)
-    and $userlocation.timestamp >= $lastTenSeconds
-    and $emergency.timestamp >= $lastTenSeconds
-  return {  
-	"user at":$userlocation,
-	"emergency":$emergency
-}};
+curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use channels;
+create function RecentEmergenciesNearUser(userName) {  
+  (
+  with tenSecondsAgo as current_datetime() - day_time_duration("PT10S")
+  SELECT r AS report, tenSecondsAgo
+  FROM EmergencyReports r, UserLocations l
+  where l.userName = userName 
+  and l.timeStamp > tenSecondsAgo
+  and r.timeStamp > tenSecondsAgo
+  and spatial_intersect(r.location,l.location))
+}
 
-create repetitive channel EmergencyChannel using RecentEmergenciesNearUser@1 period duration("PT1S");
+create repetitive channel EmergencyChannel using RecentEmergenciesNearUser@1 period duration("PT10S");
 create broker brokerA at "asdfrdd"
-' http://localhost:19002/aql > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/reponses/reponses.txt
+' http://localhost:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/reponses/reponses.txt
