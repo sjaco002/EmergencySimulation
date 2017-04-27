@@ -20,7 +20,7 @@ for line in f1:
 			location = splitLine[4].split("(")[1]
 			x = float(location.split(",")[0])
 			y = float(location.split(",")[1][:-2])
-			adm = "{\"shelterName\" : \"" + name + "\" , \"location\" : circle(\"" + str(x) + "," + str(y) + " 1.0" +  "\")" + " }\n"
+			adm = "{\"shelterName\" : \"" + name + "\" , \"location\" : circle(\"" + str(x) + "," + str(y) + " 300.0" +  "\")" + " }\n"
 			f3.write(adm)
 		if (splitLine[1] == "emergency"):
 			Etype = splitLine[5]
@@ -28,7 +28,14 @@ for line in f1:
 			timeOffSet = float(splitLine[3])
 			x = float(location.split(",")[0])
 			y = float(location.split(",")[1][:-2])
-			adm = "{\"Etype\" : \"" + Etype + "\" , \"location\" : circle(\"" + str(x) + "," + str(y) + " 1.0" +  "\")" + ", \"timeStamp\" : " + str(timeOffSet) + "\n"
+			r = 1000.0
+			if (Etype == "crash"):
+				r=100.0
+			if (Etype == "fire"):
+				r=500.0
+			if (Etype == "storm"):
+				r=2000.0
+			adm = "{\"Etype\" : \"" + Etype + "\" , \"location\" : circle(\"" + str(x) + "," + str(y) + " " + str(r) +  "\")" + ", \"timeStamp\" : " + str(timeOffSet) + "\n"
 			f4.write(adm)
 f1.close()
 f2.close()

@@ -10,6 +10,7 @@ create function RecentEmergenciesNearUser(userName) {
   and l.timeStamp > tenSecondsAgo
   and r.timeStamp > tenSecondsAgo
   and spatial_intersect(r.location,l.location))
+
 }
 
 create repetitive channel EmergencyChannel using RecentEmergenciesNearUser@1 period duration("PT10S");

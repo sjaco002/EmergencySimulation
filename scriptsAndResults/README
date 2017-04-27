@@ -5,12 +5,22 @@ ALL OTHER FILES ARE DEFAULT ONE SIMULATOR FILES
 
 Output to logs happens in DTNHost.update:
 200 shelters are created at time 0.1
-10 emergencies happen every second produced by 10 different rapidly moving users:
+10 emergencies happen every 10 seconds produced by 10 different rapidly moving users:
 	3 fires
 	5 floods
 	1 crash
 	1 storm 
-Each user updates location every ten seconds
+The one simulator doesn't give them a radius, so this should be done in convertToADM.py
+One idea for radius values would be (city is around 4,500 by 3,500 and starts at 0,0)
+flood:1000
+fire:500
+storm:2000
+crash:100
+
+Channel returns shelters that are within a radius of 300 (should be 3 or 4 on average)
+
+
+Each user has a location every 100 second
 Six groups of users: 2 pedestrians groups, 1 driving group, and 3 metro groups
 	Each group has 835 nodes, with each node representing 100 users, for a total of 501,000 users on 5,010 unique paths
 
