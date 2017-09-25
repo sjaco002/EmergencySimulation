@@ -50,6 +50,9 @@ initializeDatasets.sh:
 startChannel.sh
 1) Starts the channel going
 
+createSubscriptions.sh
+1) Creates the subscriptions
+
 startPolling.sh
 1) Sends individual User Queries (1 for every user) repeatedly
 

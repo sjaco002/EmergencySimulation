@@ -23,7 +23,7 @@ for line in locations:
 	stringTime = re.sub(r"\s+", 'T', stringTime)
 	stringTime = stringTime[0:stringTime.index(".")+4]
 	trimmedLine += "Stamp\" : datetime(\"" + stringTime + "\"), \"reportId\" : " + str(i) + "}"
-	print trimmedLine
+	#print trimmedLine
 	sock1.sendall(trimmedLine)
 
 sock1.close()
