@@ -17,3 +17,5 @@ doc/package-list
 .settings/org.eclipse.*
 *.log
 *.adm
+
+asterix-mgmt*
