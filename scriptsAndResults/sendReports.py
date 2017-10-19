@@ -5,7 +5,7 @@ import time
 import re
 import pytz
 
-ip = '127.0.0.1'
+ip = 'promethium.ics.uci.edu'
 port1 = 10008
 
 sock1 = socket()
@@ -22,8 +22,8 @@ for line in locations:
 	stringTime = "%s" %t
 	stringTime = re.sub(r"\s+", 'T', stringTime)
 	stringTime = stringTime[0:stringTime.index(".")+4]
-	trimmedLine += "Stamp\" : datetime(\"" + stringTime + "\"), \"reportId\" : " + str(i) + "}"
-	#print trimmedLine
+	trimmedLine += "Stamp\" : datetime(\"" + stringTime + "\")}"
+	print trimmedLine
 	sock1.sendall(trimmedLine)
 
 sock1.close()

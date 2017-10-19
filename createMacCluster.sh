@@ -7,4 +7,4 @@ unzip ~/asterix/asertixdb/asterixdb/asterix-installer/target/asterix-installer-0
 rm conf/asterix-configuration.xml
 cp ../asterix-configuration.xml conf/
 ./bin/managix create -n local -c clusters/local/local.xml
-cd ~/asterix/asertixdb
+cd ~/asterix/data_generator/scriptsAndResults
