@@ -47,11 +47,13 @@ initializeDatasets.sh:
 2) Fills Shelters dataset
 3) Starts channels for userlocations and EmergencyReports
 
+createSubscriptions.sh
+1) Generates a subscriptions file to bulkload subscriptions
+Use the following command: ./createSubscriptions.sh && scp subscriptions.adm promethium:two/.
+
 startChannel.sh
 1) Starts the channel going
-
-createSubscriptions.sh
-1) Creates the subscriptions
+2) Bulkloads Subscriptions
 
 startPolling.sh
 1) Sends individual User Queries (1 for every user) repeatedly
