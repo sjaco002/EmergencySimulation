@@ -55,6 +55,12 @@ startChannel.sh
 1) Starts the channel going
 2) Bulkloads Subscriptions
 
+sendIndividualSubscriptions.sh
+1) Can be used to send subscriptions 1-by-1 if you don't want all 501000
+
+statisticsQueries.sqlpp
+1) Queries to see how many things happened in the last 10 seconds
+
 startPolling.sh
 1) Sends individual User Queries (1 for every user) repeatedly
 
