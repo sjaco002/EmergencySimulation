@@ -64,7 +64,7 @@ create function add_insert_time($record) {
     return object_merge($time, $record)
 }
 
-' http://promethium.ics.uci.edu:19002/aql > reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/aql > responses/responses.txt
 
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse steven;
@@ -76,7 +76,7 @@ create feed ReportFeed using socket_adapter
     ("upsert-feed"="true"),
     ("format"="adm")
 );
-' http://promethium.ics.uci.edu:19002/aql > reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/aql > responses/responses.txt
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse steven;
 create feed LocationFeed using socket_adapter
@@ -87,21 +87,21 @@ create feed LocationFeed using socket_adapter
     ("upsert-feed"="true"),
     ("format"="adm")
 );
-' http://promethium.ics.uci.edu:19002/aql > reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/aql > responses/responses.txt
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse steven;
 connect feed ReportFeed to dataset EmergencyReports apply function add_insert_time;
-' http://promethium.ics.uci.edu:19002/aql > reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/aql > responses/responses.txt
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse steven;
 connect feed LocationFeed to dataset UserLocations apply function add_insert_time;
-' http://promethium.ics.uci.edu:19002/aql > reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/aql > responses/responses.txt
 
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse steven;
 start feed LocationFeed;
 start feed ReportFeed;
-' http://promethium.ics.uci.edu:19002/aql > reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/aql > responses/responses.txt
 
 #while read p; do
 #  curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use dataverse steven; insert into dataset EmergencyShelters('"$p"')' http://localhost:19002/aql > reponses/reponses.txt

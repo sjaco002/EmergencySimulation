@@ -21,7 +21,7 @@ while (True):
 				i = 0
 			start = time.time()
 		i=i+1
-		if (line[15:19] != 'p420'):
+		if (line[15:17] != 'p4'):
 			continue
 		trimmedLine = line.split("1.0\")")[0]
 		t = datetime.datetime.now(pytz.utc)

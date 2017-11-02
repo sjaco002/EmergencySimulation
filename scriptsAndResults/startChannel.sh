@@ -16,11 +16,11 @@ create function RecentEmergenciesNearUser(userName) {
 create repetitive channel EmergencyChannel using RecentEmergenciesNearUser@1 period duration("PT10S");
 
 create broker brokerA at "asdfrdd";
-' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt
 
 
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
 LOAD DATASET EmergencyChannelSubscriptions USING localfs
  (("path"="promethium.ics.uci.edu:///home/sjacobs/two/subscriptions.adm"),("format"="adm"));
-' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/reponses/reponses.txt
+' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt
