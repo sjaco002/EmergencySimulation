@@ -1,0 +1,23 @@
+use steven;
+select array_count ((select * from EmergencyChannelSubscriptions));
+
+select array_count ((select * from UserLocations where insert_time > current_datetime() - day_time_duration("PT10S")));
+
+select array_count ((select * from EmergencyReports where insert_time > current_datetime() - day_time_duration("PT10S")));
+
+select array_count ((select * from EmergencyChannelResults where channelExecutionTime > current_datetime()-day_time_duration("PT10S")));
+
+select array_count ((select * from UserLocations));
+
+select array_count ((select * from EmergencyReports));
+
+
+select * from EmergencyChannelResults where channelExecutionTime > current_datetime()-day_time_duration("PT10S") and 
+result. userName = "p420u2";
+
+SELECT r AS report, l.userName
+  FROM 
+  (select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration("PT10S")) r,
+  (select value l from UserLocations l where l.insert_time > current_datetime() - day_time_duration("PT10S")) l
+  where l.userName = "p420u2" 
+  and spatial_intersect(r.location,l.location);
