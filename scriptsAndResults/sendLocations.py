@@ -25,7 +25,7 @@ while (True):
 			continue
 		trimmedLine = line.split("1.0\")")[0]
 		t = datetime.datetime.now(pytz.utc)
-		t = t + datetime.timedelta(0,20)
+		#t = t + datetime.timedelta(0,20)
 		stringTime = "%s" %t
 		stringTime = re.sub(r"\s+", 'T', stringTime)
 		#print stringTime
