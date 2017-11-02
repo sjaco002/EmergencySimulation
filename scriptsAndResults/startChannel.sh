@@ -5,8 +5,8 @@ create function RecentEmergenciesNearUser(userName) {
   (
   SELECT r AS report
   FROM 
-  (select value r from EmergencyReports r where r.timeStamp > current_datetime() - day_time_duration("PT10S")) r,
-  (select value l from UserLocations l where l.timeStamp > current_datetime() - day_time_duration("PT10S")) l
+  (select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration("PT10S")) r,
+  (select value l from UserLocations l where l.insert_time > current_datetime() - day_time_duration("PT10S")) l
   where l.userName = userName 
   and spatial_intersect(r.location,l.location)
   )

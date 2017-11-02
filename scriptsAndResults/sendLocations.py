@@ -16,8 +16,8 @@ start=time.time()
 while (True):
 	locations=open("UserLocations.adm")
 	for line in locations:
-		if (i % 501000 == 0):
-			while(time.time() - start < 10):
+		if (i % 50100 == 0):
+			while(time.time() - start < 1):
 				i = 0
 			start = time.time()
 		i=i+1
