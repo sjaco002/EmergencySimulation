@@ -3,10 +3,10 @@ rm responses/responses.txt
 
 #835 and 100 would capture all users for p
 COUNTER=400
-while [  $COUNTER -lt 500 ]; do
+while [  $COUNTER -lt 410 ]; do
 	SUBCOUNTER=0
 	while [ $SUBCOUNTER -lt 100 ]; do
-		curl --silent -G -H "Accept: application/x-adm" -v -d 'mode=synchronous' --data-urlencode 'aql=use steven;
+		curl --silent -G -H "Accept: application/x-adm" -v -d 'mode=asynchronous' --data-urlencode 'aql=use steven;
           SELECT r AS report, l.userName
           FROM 
           (select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration("PT10S")) r,
@@ -18,15 +18,6 @@ while [  $COUNTER -lt 500 ]; do
 	done
 	let COUNTER=COUNTER+1 
 done
-
-curl --silent -G -H "Accept: application/x-adm" -v -d 'mode=synchronous' --data-urlencode 'aql=use steven;
-          SELECT r AS report, l.userName
-          FROM 
-          (select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration("PT10S")) r,
-          (select value l from UserLocations l where l.insert_time > current_datetime() - day_time_duration("PT10S")) l
-          where l.userName = "p835u100" 
-          and spatial_intersect(r.location,l.location);
-		' http://promethium.ics.uci.edu:19002/sqlpp >> responses/responses.txt
 
 #while [  $COUNTER -lt 1670 ]; do
 #	SUBCOUNTER=0

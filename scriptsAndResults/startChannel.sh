@@ -3,12 +3,12 @@
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
 create function RecentEmergenciesNearUser(userName) {  
   (
-  SELECT r AS report, l.userName
+  SELECT m.r AS report, m.l.userName
   FROM 
-  (select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration("PT10S")) r,
-  (select value l from UserLocations l where l.insert_time > current_datetime() - day_time_duration("PT10S")) l
-  where l.userName = userName 
-  and spatial_intersect(r.location,l.location)
+  (select * from 
+    (select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration("PT10S")) r,
+    UserLocations l where spatial_intersect(r.location,l.location)) m
+  where m.l.userName = userName
   )
 };
 

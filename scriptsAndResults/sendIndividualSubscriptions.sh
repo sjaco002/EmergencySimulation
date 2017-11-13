@@ -6,7 +6,7 @@ while [  $COUNTER -lt 421 ]; do
   while [ $SUBCOUNTER -lt 100 ]; do
     curl -G -H "Accept: application/x-adm" -v -d 'mode=asynchronous' --data-urlencode 'aql=use steven;
     subscribe to EmergencyChannel ("p'"$COUNTER"'u'"$SUBCOUNTER"'") on brokerA;
-    ' http://promethium.ics.uci.edu:19002/sqlpp > reponses/reponses.txt
+    ' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
     let SUBCOUNTER=SUBCOUNTER+1 
   done
   let COUNTER=COUNTER+1 
