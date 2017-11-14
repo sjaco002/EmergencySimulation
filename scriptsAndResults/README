@@ -64,6 +64,9 @@ statisticsQueries.sqlpp
 startPolling.sh
 1) Sends individual User Queries (1 for every user) repeatedly
 
+queryResultsTable.sh
+1) Sends a query for the last execution of results, and outputs the time taken to the end of responses/responses.txt
+
 sendLocations.py
 1) Sends User Locations over time
 
