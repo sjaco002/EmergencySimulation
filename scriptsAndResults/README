@@ -63,6 +63,8 @@ statisticsQueries.sqlpp
 
 startPolling.sh
 1) Sends individual User Queries (1 for every user) repeatedly
+2) ./startPolling.sh > responses/output.txt 2> responses/output.txt 
+3) to tell how many successful responses, grep -r -c "content-type" responses/ 
 
 queryResultsTable.sh
 1) Sends a query for the last execution of results, and outputs the time taken to the end of responses/responses.txt
