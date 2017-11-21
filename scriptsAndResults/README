@@ -61,13 +61,13 @@ sendIndividualSubscriptions.sh
 statisticsQueries.sqlpp
 1) Queries to see how many things happened in the last 10 seconds
 
-startPolling.sh
-1) Sends individual User Queries (1 for every user) repeatedly
-2) ./startPolling.sh > responses/output.txt 2> responses/output.txt 
-3) to tell how many successful responses, grep -r -c "content-type" responses/ 
+startClients.sh
+1) Sends individual User Queries as separate threads every ten seconds
+3) responses are saves in responses/results and failures are logged to reponses/fails.txt
 
 queryResultsTable.sh
 1) Sends a query for the last execution of results, and outputs the time taken to the end of responses/responses.txt
+2) Should be run on the broker server
 
 sendLocations.py
 1) Sends User Locations over time
