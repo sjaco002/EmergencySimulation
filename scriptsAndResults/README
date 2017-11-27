@@ -33,14 +33,27 @@ t has 2505-5009
 Logs are output to file specified in logging.properties
 
 
-run.sh runs the full program, including:
-
 generatedate.sh:
 1) Compiles and runs the one simulator in ../oneSimulator to produce output file with all three datasets logged
 2) Converts the output file into a seperate ADM file for each dataset (reports, locations, shelters)
 
 convertToADM.py:
 1) turns the log into individual ADM output
+
+Once those two are done, do the following steps:
+
+For Channel Version:
+1) initializeDatasets.sh
+2) startChannel.sh
+ON BROKER:
+3) python startResultsQuery.py
+4) python averageResultsQuery.py to see results
+
+For Polling Version:
+1) initializeDatasets.sh
+ON BROKER:
+2) python startClients.py 
+3) python averageClients.py to see results
 
 initializeDatasets.sh:
 1) Creates datasets 
@@ -50,6 +63,10 @@ initializeDatasets.sh:
 createSubscriptions.sh
 1) Generates a subscriptions file to bulkload subscriptions
 Use the following command: ./createSubscriptions.sh && scp subscriptions.adm promethium:two/.
+
+createSubscriptions.py
+1) Generates a subscriptions file to bulkload subscriptions
+Use the following command: python createSubscriptions.py && scp subscriptions.adm promethium:two/.
 
 startChannel.sh
 1) Starts the channel going
@@ -61,16 +78,33 @@ sendIndividualSubscriptions.sh
 statisticsQueries.sqlpp
 1) Queries to see how many things happened in the last 10 seconds
 
-startClients.sh
-1) Sends individual User Queries as separate threads every ten seconds
-3) responses are saves in responses/results and failures are logged to reponses/fails.txt
-
-queryResultsTable.sh
-1) Sends a query for the last execution of results, and outputs the time taken to the end of responses/responses.txt
-2) Should be run on the broker server
-
 sendLocations.py
 1) Sends User Locations over time
 
 sendReports.py
 1) Sends Reports over time
+
+
+RUN THE REST OF THESE ON THE BROKER:
+startClients.py
+1) Sends individual User Queries as separate threads every ten seconds
+3) responses are saves in responses/results and failures are logged to reponses/fails.txt
+
+averageClients.py
+1) Finds the average runtime and success rates for startClients.py
+
+startResultsQuery.py (uses queryResultsTable)
+1) Starts a process to query the results table every ten seconds
+2) Records the execution time as lines in responses/responses.txt
+3) Should be run on the Broker Server
+
+averageResultsQuery.py
+1) Collects data from startResultsQuery and finds the average query time
+
+queryResultsTable.sh
+1) Sends a query for the last execution of results, and outputs the time taken to the end of responses/responses.txt
+2) Should be run on the broker server
+
+averageResultTime
+1) Uses the responses from startResultsQuery to find the average query time for the results table
+

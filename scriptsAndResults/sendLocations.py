@@ -12,17 +12,17 @@ sock1 = socket()
 sock1.connect((ip, port1))
 
 i=0
+stop = 100
 start=time.time()
 while (True):
 	locations=open("UserLocations.adm")
 	for line in locations:
-		if (i % 50100 == 0):
-			while(time.time() - start < 1):
+		if (i == stop):
+			while(time.time() - start < 10):
 				i = 0
 			start = time.time()
-		i=i+1
-		if (line[15:19] != 'p420'):
-			continue
+			locations.close()
+			break
 		trimmedLine = line.split("1.0\")")[0]
 		t = datetime.datetime.now(pytz.utc)
 		#t = t + datetime.timedelta(0,20)
@@ -33,5 +33,6 @@ while (True):
 		trimmedLine += "1.0\"), \"timeStamp\" : datetime(\"" + stringTime + "\")}"
 		print trimmedLine
 		sock1.sendall(trimmedLine)
+		i=i+1
 
 sock1.close()

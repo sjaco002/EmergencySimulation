@@ -15,8 +15,8 @@ i=1
 while (True):
 	locations=open("Emergencies.adm")
 	for line in locations:
-		if (i % 100 == 0):
-			time.sleep(5)
+		if (i % 1 == 0):
+			time.sleep(1)
 		i=i+1
 		trimmedLine = line.split("Stamp")[0]
 		t = datetime.datetime.now(pytz.utc)
