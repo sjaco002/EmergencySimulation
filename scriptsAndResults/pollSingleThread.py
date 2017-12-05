@@ -21,9 +21,9 @@ while (j<20):
                 trimmedLine = line.split("\"")
                 username = trimmedLine[3]
                 location = trimmedLine[7]       
-                command = "until $(curl --silent -G -H \"Accept: application/x-adm\" -v -d 'mode=synchronous' --data-urlencode 'aql=use steven; select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration(\"PT10S\") and spatial_intersect(r.location,circle(\""
+                command = "curl --silent -G -H \"Accept: application/x-adm\" -v -d 'mode=synchronous' --data-urlencode 'aql=use steven; select value r from EmergencyReports r where r.insert_time > current_datetime() - day_time_duration(\"PT10S\") and spatial_intersect(r.location,circle(\""
                 command += location + "\")); ' http://promethium.ics.uci.edu:19002/sqlpp -w %{time_total} >> responses/results/"
-                command += username + ".txt); do : ; done"
+                command += username + ".txt"
                 os.system(command)
                 elapsed = time.time() - start
                 os.system("echo '' >> responses/results/"+username+".txt")
