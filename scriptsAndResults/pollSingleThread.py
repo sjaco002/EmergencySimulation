@@ -11,6 +11,7 @@ os.system("mkdir responses && mkdir responses/results && mkdir responses/times")
 
 i=0
 j=0
+maxUsers = 100
 while (j<20):
         locations=open("UserLocations.adm")
         i=0
@@ -26,7 +27,7 @@ while (j<20):
                 os.system(command)
                 elapsed = time.time() - start
                 #os.system("echo '' >> responses/results/"+username+".txt")
-                if (elapsed > 10):
+                if (elapsed > 10 or i >= maxUsers):
                         break
         os.system("echo '" + str(i) + "\n' >> responses/amounts.txt")
         j=j+1

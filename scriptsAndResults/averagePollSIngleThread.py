@@ -20,11 +20,6 @@ for line in results:
 		maxUsers = users
 	if (users < minUsers):
 		minUsers = users
-print "executions:" + str(executions)
-print "totalPolls:" + str(totalPolls)
-print "max succeeded:" + str(maxUsers)
-print "min succeeded:" + str(minUsers)
-print "average succeeded:" + str(totalPolls/executions)
 
 count=0.0
 sumation=0.0
@@ -39,7 +34,14 @@ for filename in os.listdir("responses/results"):
 	        sumation += float(line)
 	        if (float(line) > maxi):
 	        	maxi = float(line)
+
+print "executions:" + str(executions)
+print "totalPolls:" + str(totalPolls)
+print "max succeeded:" + str(maxUsers)
+print "min succeeded:" + str(minUsers)
 print "requests:" + str(count)
 print "total request times:" + str(sumation)
-print "max request time:" + str(maxi)
-print "avg request time:" + str(sumation/count)
+print "polling user average:" + str(totalPolls/executions)
+print "average total time:" + str(sumation/executions)
+print "avg user time:" + str(sumation/count)
+print "max user time:" + str(maxi)

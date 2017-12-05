@@ -15,7 +15,7 @@ i=1
 while (True):
 	locations=open("Emergencies.adm")
 	for line in locations:
-		if (i % 10 == 0):
+		if (i % 1 == 0):
 			time.sleep(1)
 		i=i+1
 		trimmedLine = line.split("Stamp")[0]
