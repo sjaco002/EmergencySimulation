@@ -8,7 +8,7 @@ import os
 os.remove('subscriptions.adm')
 
 i=0
-stop = 10000
+stop = 20000
 locations=open("UserLocations.adm")
 subs = open('subscriptions.adm','w+')
 for line in locations:

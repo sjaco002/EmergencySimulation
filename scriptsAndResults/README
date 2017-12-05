@@ -52,8 +52,9 @@ ON BROKER:
 For Polling Version:
 1) initializeDatasets.sh
 ON BROKER:
-2) python startClients.py 
-3) python averageClients.py to see results
+2) python pollSingleThread.py 
+3) python averagePollSingleThread.py to see results
+
 
 initializeDatasets.sh:
 1) Creates datasets 

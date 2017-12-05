@@ -12,7 +12,7 @@ sock1 = socket()
 sock1.connect((ip, port1))
 
 i=0
-stop = 100
+stop = 10000
 start=time.time()
 while (True):
 	locations=open("UserLocations.adm")
