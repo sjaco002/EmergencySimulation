@@ -26,8 +26,11 @@ while (j<20):
                 command += username + ".txt); do : ; done"
                 os.system(command)
                 elapsed = time.time() - start
-                #os.system("echo '' >> responses/results/"+username+".txt")
-                if (elapsed > 10 or i >= maxUsers):
+                os.system("echo '' >> responses/results/"+username+".txt")
+                if (i >= maxUsers):
+                        while (elapsed < 10):
+                                elapsed = time.time() - start
+                if (elapsed >= 10):
                         break
         os.system("echo '" + str(i) + "\n' >> responses/amounts.txt")
         j=j+1
