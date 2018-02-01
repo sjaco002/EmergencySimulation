@@ -52,7 +52,7 @@ ON BROKER:
 For Polling Version:
 1) initializeDatasets.sh
 ON BROKER:
-2) python pollSingleThread.py 
+2) rm -rf results.txt && python pollSingleThread.py >> results.txt
 3) python averagePollSingleThread.py to see results
 
 

@@ -12,25 +12,25 @@ sock1 = socket()
 sock1.connect((ip, port1))
 
 i=0
-stop = 10000
+stop = 100
 start=time.time()
 while (True):
 	locations=open("UserLocations.adm")
 	for line in locations:
-		if (i == stop):
-			while(time.time() - start < 10):
+		if (i == stop/10):
+			while(time.time() - start < 1):
 				i = 0
 			start = time.time()
 			locations.close()
 			break
-		trimmedLine = line.split("1.0\")")[0]
+		trimmedLine = line.split("50.0\")")[0]
 		t = datetime.datetime.now(pytz.utc)
 		#t = t + datetime.timedelta(0,20)
 		stringTime = "%s" %t
 		stringTime = re.sub(r"\s+", 'T', stringTime)
 		#print stringTime
 		stringTime = stringTime[0:stringTime.index(":")+6]
-		trimmedLine += "1.0\"), \"timeStamp\" : datetime(\"" + stringTime + "\")}"
+		trimmedLine += "100.0\"), \"timeStampGiven\" : datetime(\"" + stringTime + "\")}"
 		print trimmedLine
 		sock1.sendall(trimmedLine)
 		i=i+1

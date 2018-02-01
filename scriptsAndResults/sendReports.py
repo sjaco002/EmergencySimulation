@@ -15,7 +15,7 @@ i=1
 while (True):
 	locations=open("Emergencies.adm")
 	for line in locations:
-		if (i % 1 == 0):
+		if (i % 10 == 0):
 			time.sleep(1)
 		i=i+1
 		trimmedLine = line.split("Stamp")[0]
@@ -24,7 +24,7 @@ while (True):
 		stringTime = "%s" %t
 		stringTime = re.sub(r"\s+", 'T', stringTime)
 		stringTime = stringTime[0:stringTime.index(".")+4]
-		trimmedLine += "Stamp\" : datetime(\"" + stringTime + "\")}"
+		trimmedLine += "Stampgiven\" : datetime(\"" + stringTime + "\")}"
 		print trimmedLine
 		sock1.sendall(trimmedLine)
 
