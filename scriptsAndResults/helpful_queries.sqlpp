@@ -1,0 +1,38 @@
+use steven;
+
+select array_count((select * from UserLocations));
+
+select array_count((select * from EmergencyChannelSubscriptions));
+
+select array_count((select * from Shelters));
+
+select array_count((select * from Reports where timeStamp > current_datetime() - day_time_duration("PT10S")));
+
+select array_count((select * from UserLocations where timeStamp > current_datetime() - day_time_duration("PT10S")));
+
+select array_count((select * from EmergencyChannelResults where channelExecutionTime > current_datetime() - day_time_duration("PT10S")));
+
+select AVG(cnt) from EmergencyChannelResults
+let cnt = array_count(result.shelters);
+
+
+//Divide into 2 even sets:
+select array_count((select * from EmergencyChannelResults
+where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,0.0), create_point(4200.0,1168.0)))));
+select array_count((select * from EmergencyChannelResults
+where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,1168.0), create_point(4200.0,3200.0)))));
+
+
+
+//Divide into 3 even sets:
+select array_count((select * from EmergencyChannelResults
+where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,0.0), create_point(4200.0,965.0)))));
+select array_count((select * from EmergencyChannelResults
+where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,965.0), create_point(4200.0,1467.0)))));
+select array_count((select * from EmergencyChannelResults
+where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,1467.0), create_point(4200.0,3200.0)))));
+
+
+
+{ "EmergencyChannelResults": { "resultId": "c9c847eb-050e-85c8-1c64-95e60c08a9fd", "channelExecutionTime": "2018-02-12T20:07:01.950Z", "subscriptionId": "e82f5d23-19ac-2c5f-fa3b-2a073e514ebe", "deliveryTime": "2018-02-12T20:07:01.959Z", "result": { "report": { "reportId": "c9c847eb-240e-85c7-dfa8-638ac4063edb", "Etype": "flood", "location": [ [2719.47, 967.5], 1000.0 ], "timeStamp": "2018-02-12T20:06:58.445Z", "timeStampgiven": "2018-02-12T20:06:58.440Z" }, "shelters": [ { "location": [2872.98, 957.52] }, { "location": [2913.07, 954.89] } ] } } }
+
