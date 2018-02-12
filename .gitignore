@@ -16,6 +16,6 @@ doc/package-list
 /target/
 .settings/org.eclipse.*
 *.log
-*.adm
+scriptsAndResults/UserLocations.adm
 
 asterix-mgmt*

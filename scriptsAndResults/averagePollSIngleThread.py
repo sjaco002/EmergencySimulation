@@ -12,22 +12,22 @@ count=0.0
 sumation=0.0
 maxi=0.0
 
-results=open("results.txt")
+results=open(sys.argv[1])
 for line in results:
-	splitit = line.split(" ")
-	if (splitit[0] == "time:") :
-		totalPolls += 1
-		itime = float(splitit[1])
-		sumation += itime
-		if (itime > maxi):
-	    	maxi = itime
-	elif (splitit[0] == "requests:") :
-		executions += 1
-		users = float(splitit[1])
-		if (users > maxUsers):
-			maxUsers = users
-		if (users < minUsers):
-			minUsers = users
+        splitit = line.split(" ")
+        if (splitit[0] == "time:") :
+                totalPolls += 1
+                itime = float(splitit[1])
+                sumation += itime
+                if (itime > maxi):
+                        maxi = itime
+        elif (splitit[0] == "requests:") :
+                executions += 1
+                users = float(splitit[1])
+                if (users > maxUsers):
+                        maxUsers = users
+                if (users < minUsers):
+                        minUsers = users
 
 print "executions:" + str(executions)
 print "requests:" + str(totalPolls)

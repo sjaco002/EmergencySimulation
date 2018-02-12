@@ -11,11 +11,13 @@ port1 = 10008
 sock1 = socket()
 sock1.connect((ip, port1))
 
+t_end = time.time() + 200
+
 i=1
 while (True):
 	locations=open("Emergencies.adm")
 	for line in locations:
-		if (i % 10 == 0):
+		if (i % 1 == 0):
 			time.sleep(1)
 		i=i+1
 		trimmedLine = line.split("Stamp")[0]

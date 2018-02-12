@@ -47,7 +47,7 @@ For Channel Version:
 2) startChannel.sh
 ON BROKER:
 3) python startResultsQuery.py
-4) python averageResultsQuery.py to see results
+4) python averageResultsTime.py to see results
 
 For Polling Version:
 1) initializeDatasets.sh

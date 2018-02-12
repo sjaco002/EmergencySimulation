@@ -53,6 +53,11 @@ create function add_insert_time(record) {
 
 ' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
 
+curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+LOAD DATASET Reports USING localfs
+ (("path"="promethium.ics.uci.edu:///home/sjacobs/three/EmergenciesBulk.adm"),("format"="adm"));
+' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
 create feed ReportFeed with
@@ -92,5 +97,5 @@ start feed ReportFeed;
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
 LOAD DATASET Shelters USING localfs
- (("path"="promethium.ics.uci.edu:///home/sjacobs/three/SheltersPoint.adm"),("format"="adm"));
+ (("path"="promethium.ics.uci.edu:///home/sjacobs/three/Shelters200s0.adm"),("format"="adm"));
 ' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt

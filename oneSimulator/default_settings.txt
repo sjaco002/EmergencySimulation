@@ -108,7 +108,6 @@ Group6.speed = 7, 10
 
 
 Group7.groupID = e
-#Group7.nrofHosts = 50
 Group7.waitTime = 0, 0
 Group7.speed = 1000, 1000
 Group7.nrofHosts = 10

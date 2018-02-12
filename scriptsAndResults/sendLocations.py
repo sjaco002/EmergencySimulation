@@ -17,13 +17,13 @@ start=time.time()
 while (True):
 	locations=open("UserLocations.adm")
 	for line in locations:
-		if (i == stop/10):
-			while(time.time() - start < 1):
+		if (i == stop):
+			while(time.time() - start < 10):
 				i = 0
 			start = time.time()
 			locations.close()
 			break
-		trimmedLine = line.split("50.0\")")[0]
+		trimmedLine = line.split("100.0\")")[0]
 		t = datetime.datetime.now(pytz.utc)
 		#t = t + datetime.timedelta(0,20)
 		stringTime = "%s" %t
