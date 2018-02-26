@@ -16,21 +16,12 @@ select AVG(cnt) from EmergencyChannelResults
 let cnt = array_count(result.shelters);
 
 
-//Divide into 2 even sets:
-select array_count((select * from EmergencyChannelResults
-where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,0.0), create_point(4200.0,1168.0)))));
-select array_count((select * from EmergencyChannelResults
-where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,1168.0), create_point(4200.0,3200.0)))));
-
-
-
-//Divide into 3 even sets:
-select array_count((select * from EmergencyChannelResults
-where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,0.0), create_point(4200.0,965.0)))));
-select array_count((select * from EmergencyChannelResults
-where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,965.0), create_point(4200.0,1467.0)))));
-select array_count((select * from EmergencyChannelResults
-where spatial_intersect(get_center(result.report.location),create_rectangle(create_point(0.0,1467.0), create_point(4200.0,3200.0)))));
+use steven;
+select array_count((select * from EmergencyChannelResults));
+//Divide into brokers:
+array_count((select * from EmergencyChannelResults r where r.channelExecutionTime > current_datetime()-day_time_duration("PT10S") and r. subscriptionId in (select  value subscriptionId  from EmergencyChannelSubscriptions where BrokerName = "brokerA")));
+array_count((select * from EmergencyChannelResults r where r.channelExecutionTime > current_datetime()-day_time_duration("PT10S") and r. subscriptionId in (select  value subscriptionId  from EmergencyChannelSubscriptions where BrokerName = "brokerB")));
+array_count((select * from EmergencyChannelResults r where r.channelExecutionTime > current_datetime()-day_time_duration("PT10S") and r. subscriptionId in (select  value subscriptionId  from EmergencyChannelSubscriptions where BrokerName = "brokerC")));
 
 
 

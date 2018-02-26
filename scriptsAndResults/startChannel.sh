@@ -19,12 +19,11 @@ create repetitive channel EmergencyChannel using RecentEmergenciesNearUser@1 per
 create broker brokerA at "asdfrdd";
 create broker brokerB at "asdfrdd";
 create broker brokerC at "asdfrdd";
-create broker brokerD at "asdfrdd";
 ' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt
 
 
 
 curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
 LOAD DATASET EmergencyChannelSubscriptions USING localfs
- (("path"="promethium.ics.uci.edu:///home/sjacobs/three/subscriptions27648broker1.adm"),("format"="adm"));
+ (("path"="promethium.ics.uci.edu:///home/sjacobs/three/subscriptions10broker1.adm"),("format"="adm"));
 ' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt

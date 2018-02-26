@@ -11,7 +11,7 @@ Output to logs happens in DTNHost.update:
 	1 crash
 	1 storm 
 The one simulator doesn't give them a radius, so this should be done in convertToADM.py
-One idea for radius values would be (city is around 4,500 by 3,500 and starts at 0,0)
+One idea for radius values would be (city is around 4,200 by 3,200 and starts at 0,0)
 flood:1000
 fire:500
 storm:2000

@@ -3,7 +3,7 @@ import random
 import datetime
 import time
 import re
-import pytz
+import sys
 
 ip = 'promethium.ics.uci.edu'
 port1 = 10009
@@ -12,19 +12,18 @@ sock1 = socket()
 sock1.connect((ip, port1))
 
 i=0
-stop = 27648
+users = sys.argv[1]
+persecond = float(users) / 10.0
 start=time.time()
 while (True):
 	locations=open("UserLocations.adm")
 	for line in locations:
-		if (i == stop):
-			while(time.time() - start < 10):
-				i = 0
-			start = time.time()
-			locations.close()
-			break
+		if (i % persecond == 0):
+			while(time.time() - start < 1):
+				pass
+			start=time.time()
 		trimmedLine = line.split("100.0\")")[0]
-		t = datetime.datetime.now(pytz.utc)
+		t = datetime.datetime.utcnow()
 		#t = t + datetime.timedelta(0,20)
 		stringTime = "%s" %t
 		stringTime = re.sub(r"\s+", 'T', stringTime)
@@ -34,5 +33,9 @@ while (True):
 		print trimmedLine
 		sock1.sendall(trimmedLine)
 		i=i+1
+		if (i >= float(users)):
+			i = 0
+			locations.close()
+			break
 
 sock1.close()
