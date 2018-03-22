@@ -56,6 +56,16 @@ ON BROKER:
 3) python averagePollSingleThread.py to see results
 
 
+To send data to the feeds:
+1) sendLocations.py (takes a parameter for the number of users)
+2) sendReports.py (takes a parameter for the number of reports per second)
+
+
+makeSubscriptionsFile.py
+1) Takes two parameters: the number of users and the number of brokers [1,2,3]
+2) creates a subscriptions file for that setting as subscriptionsXbrokerY.adm
+
+
 initializeDatasets.sh:
 1) Creates datasets 
 2) Fills Shelters dataset

@@ -20,15 +20,17 @@ while (True):
 	for line in locations:
 		if (i % persecond == 0):
 			time.sleep(1)
+		j = 0
+		while (j < -1):
+			sline='{"Etype" : "flood" , "location" : circle("20000.5,20000.56 1.0")}'
+			print sline
+			sock1.sendall(sline)
+			j=j+1
+			i=i+1
+			if (i % persecond == 0):
+				time.sleep(1)
+		print line
+		sock1.sendall(line)
 		i=i+1
-		trimmedLine = line.split("Stamp")[0]
-		t = datetime.datetime.utcnow()
-		#t = t + datetime.timedelta(0,20)
-		stringTime = "%s" %t
-		stringTime = re.sub(r"\s+", 'T', stringTime)
-		stringTime = stringTime[0:stringTime.index(".")+4]
-		trimmedLine += "Stampgiven\" : datetime(\"" + stringTime + "\")}"
-		print trimmedLine
-		sock1.sendall(trimmedLine)
 
 sock1.close()

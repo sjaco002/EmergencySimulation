@@ -22,16 +22,17 @@ while (True):
 			while(time.time() - start < 1):
 				pass
 			start=time.time()
-		trimmedLine = line.split("100.0\")")[0]
-		t = datetime.datetime.utcnow()
+		#trimmedLine = line.split("100.0\")")[0]
+		#t = datetime.datetime.utcnow()
 		#t = t + datetime.timedelta(0,20)
-		stringTime = "%s" %t
-		stringTime = re.sub(r"\s+", 'T', stringTime)
+		#stringTime = "%s" %t
+		#stringTime = re.sub(r"\s+", 'T', stringTime)
 		#print stringTime
-		stringTime = stringTime[0:stringTime.index(":")+6]
-		trimmedLine += "100.0\"), \"timeStampGiven\" : datetime(\"" + stringTime + "\")}"
-		print trimmedLine
-		sock1.sendall(trimmedLine)
+		#stringTime = stringTime[0:stringTime.index(":")+6]
+		#trimmedLine += "100.0\")}"#, \"timeStampGiven\" : datetime(\"" + stringTime + "\")}"
+		#line = '{"userName" : "c1076u3" , "location" : circle("2313.73,1851.63 100.0")}'
+		print line
+		sock1.sendall(line)
 		i=i+1
 		if (i >= float(users)):
 			i = 0

@@ -25,5 +25,9 @@ array_count((select * from EmergencyChannelResults r where r.channelExecutionTim
 
 
 
-{ "EmergencyChannelResults": { "resultId": "c9c847eb-050e-85c8-1c64-95e60c08a9fd", "channelExecutionTime": "2018-02-12T20:07:01.950Z", "subscriptionId": "e82f5d23-19ac-2c5f-fa3b-2a073e514ebe", "deliveryTime": "2018-02-12T20:07:01.959Z", "result": { "report": { "reportId": "c9c847eb-240e-85c7-dfa8-638ac4063edb", "Etype": "flood", "location": [ [2719.47, 967.5], 1000.0 ], "timeStamp": "2018-02-12T20:06:58.445Z", "timeStampgiven": "2018-02-12T20:06:58.440Z" }, "shelters": [ { "location": [2872.98, 957.52] }, { "location": [2913.07, 954.89] } ] } } }
+{ "EmergencyChannelResults": { "resultId": uuid("e82f5d23-e8ac-2c7f-e855-d89b279713d1"), "channelExecutionTime": datetime("2018-02-13T18:49:12.103Z"), "subscriptionId": uuid("e82f5d23-2fac-2c7f-8ff0-a41bd86eb833"), "deliveryTime": datetime("2018-02-13T18:49:12.618Z"), "result": { "report": { "reportId": uuid("c9c847eb-3b0e-85e7-5d36-b7c30763eb5c"), "Etype": "flood", "location": circle("2830.75,1332.91 1000.0"), "timeStamp": datetime("2018-02-13T18:49:08.136Z"), "timeStampgiven": datetime("2018-02-13T18:49:08.131Z") }, "shelters": [ { "location": point("2594.22,1078.11") }, { "location": point("2567.07,1104.86") } ] } } }
+{ "EmergencyChannelResults": { "resultId": uuid("e82f5d23-e8ac-2c7f-e855-d89b279713d2"), "channelExecutionTime": datetime("2018-02-13T18:49:12.103Z"), "subscriptionId": uuid("e82f5d23-2fac-2c7f-8ff0-a41bd86eb833"), "deliveryTime": datetime("2018-02-13T18:49:12.618Z"), "result": { "report": { "reportId": uuid("417d6d65-9ce5-d1ad-4ed9-f3236791cf91"), "Etype": "fire", "location": circle("2123.42,1297.09 500.0"), "timeStamp": datetime("2018-02-13T18:49:02.117Z"), "timeStampgiven": datetime("2018-02-13T18:49:02.115Z") }, "shelters": [ { "location": point("2594.22,1078.11") }, { "location": point("2567.07,1104.86") } ] } } }
 
+
+
+http://promethium.ics.uci.edu:19002/admin/active
