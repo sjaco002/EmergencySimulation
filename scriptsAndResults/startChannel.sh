@@ -1,8 +1,6 @@
 #! /bin/sh
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
-
-
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 
 create function RecentEmergenciesNearUser(userName) {  
   (
@@ -18,14 +16,15 @@ create function RecentEmergenciesNearUser(userName) {
 
 create repetitive channel EmergencyChannel using RecentEmergenciesNearUser@1 period duration("PT10S");
 
-create broker brokerA at "asdfrdd";
-create broker brokerB at "asdfrdd";
-create broker brokerC at "asdfrdd";
-' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt
+create broker brokerA at "http://polonium.ics.uci.edu:19004";
+//create broker brokerA at "asssf";
+create broker brokerB at "http://polonium.ics.uci.edu:19007";
+create broker brokerC at "http://polonium.ics.uci.edu:19007";
+' http://promethium.ics.uci.edu:19002/query/service > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt
 
 
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 LOAD DATASET EmergencyChannelSubscriptions USING localfs
- (("path"="promethium.ics.uci.edu:///home/sjacobs/three/subscriptions/subscriptions500broker1.adm"),("format"="adm"));
-' http://promethium.ics.uci.edu:19002/sqlpp > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt
+ (("path"="promethium.ics.uci.edu:///home/asterix/three/subscriptions/subscriptions500broker1.adm"),("format"="adm"));
+' http://promethium.ics.uci.edu:19002/query/service > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt

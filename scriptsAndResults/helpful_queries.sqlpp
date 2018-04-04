@@ -29,5 +29,18 @@ array_count((select * from EmergencyChannelResults r where r.channelExecutionTim
 { "EmergencyChannelResults": { "resultId": uuid("e82f5d23-e8ac-2c7f-e855-d89b279713d2"), "channelExecutionTime": datetime("2018-02-13T18:49:12.103Z"), "subscriptionId": uuid("e82f5d23-2fac-2c7f-8ff0-a41bd86eb833"), "deliveryTime": datetime("2018-02-13T18:49:12.618Z"), "result": { "report": { "reportId": uuid("417d6d65-9ce5-d1ad-4ed9-f3236791cf91"), "Etype": "fire", "location": circle("2123.42,1297.09 500.0"), "timeStamp": datetime("2018-02-13T18:49:02.117Z"), "timeStampgiven": datetime("2018-02-13T18:49:02.115Z") }, "shelters": [ { "location": point("2594.22,1078.11") }, { "location": point("2567.07,1104.86") } ] } } }
 
 
+INFO: 
+Sending 'POST' request to URL : http://notifyA.com
+Mar 30, 2018 12:26:58 PM org.apache.asterix.bad.runtime.NotifyBrokerRuntime sendGroupOfResults
+12:26:58.625 [Worker:ClusterController] INFO  org.apache.hyracks.control.cc.executor.JobExecutor - Runnable TC roots: [], inProgressTaskClusters: []
+12:26:58.625 [Worker:ClusterController] INFO  org.apache.hyracks.control.common.work.WorkQueue - Executing: JobCleanup: JobId@JID:0.50 Status@TERMINATED
+12:26:58.625 [Worker:ClusterController] INFO  org.apache.hyracks.control.cc.work.JobCleanupWork - Cleanup for JobRun with id: JID:0.50
+INFO: Post parameters : { "dataverseName":"steven", "channelName":"EmergencyChannel", "channelExecutionTime":"2018-03-30T19:26:57.857Z", "subscriptionIds":[298955f6-2d38-4046-af75-371078c743fb,298955f6-2d38-4046-af75-371078c743fa,298955f6-2d38-4046-af75-371078c743e3,298955f6-2d38-4046-af75-371078c743e5,298955f6-2d38-4046-af75-371078c743e4,298955f6-2d38-4046-af75-371078c743e7,298955f6-2d38-4046-af75-371078c743e6,298955f6-2d38-4046-af75-371078c743e9,298955f6-2d38-4046-af75-371078c743e8,298955f6-2d38-4046-af75-371078c743f0,298955f6-2d38-4046-af75-371078c743f2,298955f6-2d38-4046-af75-371078c743f1,298955f6-2d38-4046-af75-371078c743fd,298955f6-2d38-4046-af75-371078c743fc,298955f6-2d38-4046-af75-371078c743ff,298955f6-2d38-4046-af75-371078c743fe,298955f6-2d38-4046-af75-371078c74401,298955f6-2d38-4046-af75-371078c74400,298955f6-2d38-4046-af75-371078c743ea,298955f6-2d38-4046-af75-371078c743f4,298955f6-2d38-4046-af75-371078c743f3,298955f6-2d38-4046-af75-371078c743f6,298955f6-2d38-4046-af75-371078c743f5,298955f6-2d38-4046-af75-371078c743f8,298955f6-2d38-4046-af75-371078c743f7,298955f6-2d38-4046-af75-371078c743f9,298955f6-2d38-4046-af75-371078c743ec,298955f6-2d38-4046-af75-371078c743eb,298955f6-2d38-4046-af75-371078c743ee,298955f6-2d38-4046-af75-371078c743ed,298955f6-2d38-4046-af75-371078c743ef]}
+12:26:58.625 [Worker:asterix_nc1] INFO  org.apache.hyracks.control.common.work.WorkQueue - Executing: CleanupJoblet
+Mar 30, 2018 12:26:58 PM org.apache.asterix.bad.runtime.NotifyBrokerRuntime sendGroupOfResults
+12:26:58.625 [Worker:asterix_nc1] INFO  org.apache.hyracks.control.nc.work.CleanupJobletWork - Cleaning up after job: JID:0.50
+INFO: Response Code : 200
+
+
 
 http://promethium.ics.uci.edu:19002/admin/active

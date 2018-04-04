@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #create dataverse and datasets
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=drop dataverse steven if exists;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=drop dataverse steven if exists;
 create dataverse steven;
 use steven;
 
@@ -51,15 +51,15 @@ create function add_insert_time(record) {
     object_merge({"timeStamp": current_datetime()}, record)
 };
 
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 LOAD DATASET Reports USING localfs
- (("path"="promethium.ics.uci.edu:///home/sjacobs/three/EmergenciesBulk.adm"),("format"="adm"));
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+ (("path"="promethium.ics.uci.edu:///home/asterix/three/EmergenciesBulk.adm"),("format"="adm"));
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
 
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 create feed ReportFeed with
 {
 	"adapter-name" : "socket_adapter",
@@ -68,9 +68,9 @@ create feed ReportFeed with
     "type-name" : "EmergencyReportFeedType",
     "format" : "adm"
 };
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 create feed LocationFeed with
 {
 	"adapter-name" : "socket_adapter",
@@ -79,23 +79,23 @@ create feed LocationFeed with
     "type-name" : "UserLocationFeedType",
     "format" : "adm"
 };
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 connect feed ReportFeed to dataset Reports apply function add_insert_time;
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 connect feed LocationFeed to dataset UserLocations apply function add_insert_time;
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
 
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 start feed LocationFeed;
 start feed ReportFeed;
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
 
-curl -G -H "Accept: application/x-adm" -v --data-urlencode 'aql=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 LOAD DATASET Shelters USING localfs
- (("path"="promethium.ics.uci.edu:///home/sjacobs/three/Shelters200s0.adm"),("format"="adm"));
-' http://promethium.ics.uci.edu:19002/sqlpp > responses/responses.txt
+ (("path"="promethium.ics.uci.edu:///home/asterix/three/shelters/Shelters200s0.adm"),("format"="adm"));
+' http://promethium.ics.uci.edu:19002/query/service > responses/responses.txt
