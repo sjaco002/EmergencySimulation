@@ -46,14 +46,18 @@ For Channel Version:
 1) initializeDatasets.sh
 2) startChannel.sh
 ON BROKER:
-3) python startResultsQuery.py
-4) python averageResultsTime.py to see results
+	Pull-Based:
+		3) python post.py 19004
+	Push-Based:
+		3) python post-pull.py 19004
+	4) python averageResultsTime.py to see results
 
 For Polling Version:
 1) initializeDatasets.sh
 ON BROKER:
 2) rm -rf results.txt && python pollSingleThread.py >> results.txt
-3) python averagePollSingleThread.py to see results
+See results:
+3) python averagePollSingleThread.py results.txt
 
 
 To send data to the feeds:
