@@ -2,6 +2,9 @@
 
 curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
 
+
+SET `compiler.parallelism` "12";
+
 create function RecentEmergenciesNearUser(userName) {  
   (
 	select report, shelters from
@@ -24,7 +27,7 @@ create broker brokerC at "http://polonium.ics.uci.edu:19007";
 
 
 
-curl -H "Accept: application/x-adm" -v --data-urlencode 'statement=use steven;
+curl -H "Accept: application/x-adm" -v --data-urlencode "statement=use steven;
 LOAD DATASET EmergencyChannelSubscriptions USING localfs
- (("path"="promethium.ics.uci.edu:///home/asterix/three/subscriptions/subscriptions10000broker1.adm"),("format"="adm"));
-' http://promethium.ics.uci.edu:19002/query/service > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt
+ (('path'='promethium.ics.uci.edu:///home/asterix/three/subscriptions/subscriptions"$1"broker"$2".adm'),('format'='adm'));
+" http://promethium.ics.uci.edu:19002/query/service > /Users/stevenjacobs/asterix/data_generator/scriptsAndResults/responses/responses.txt

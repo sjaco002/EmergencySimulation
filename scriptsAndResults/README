@@ -44,7 +44,8 @@ Once those two are done, do the following steps:
 
 For Channel Version:
 1) initializeDatasets.sh
-2) startChannel.sh
+2) channel.sh X Y
+X=users, Y=brokers
 ON BROKER:
 	Pull-Based:
 		3) python post.py 19004

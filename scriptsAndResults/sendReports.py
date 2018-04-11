@@ -21,7 +21,7 @@ while (True):
 		if (i % persecond == 0):
 			time.sleep(1)
 		j = 0
-		while (j < -1):
+		while (j < 9):
 			sline='{"Etype" : "flood" , "location" : circle("20000.5,20000.56 1.0")}'
 			print sline
 			sock1.sendall(sline)
